@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Personal Website - Nuril Arisha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fff8f6;
+      --accent:#f4b6b9;
+      --dark:#222;
+      --muted:#666;
+      --card:#fff;
+      --shadow:0 6px 18px rgba(0,0,0,0.08);
+      --radius:12px;
+      --max-width:1100px;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+    body{
+      font-family:'Poppins', sans-serif;
+      background:linear-gradient(#fff, var(--bg));
+      color:var(--dark);
+      line-height:1.6;
+    }
+
+    /* Navigation */
+    nav{
+      background:var(--accent);
+      padding:18px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+    nav a{
+      text-decoration:none;
+      margin-left:18px;
+      color:var(--dark);
+      font-weight:600;
+      transition: all 0.3s ease;
+    }
+    nav a:hover{
+      color:#fff;
+      transform: translateY(-2px);
+    }
+    .btn{
+      padding:10px 16px;
+      background:#fff;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      color:#111;
+      box-shadow:var(--shadow);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Animated elements */
+    .animate-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .animate-left {
+      animation: fadeInLeft 0.8s ease-out;
+    }
+
+    .animate-right {
+      animation: fadeInRight 0.8s ease-out;
+    }
+
+    .animate-scale {
+      animation: scaleIn 0.6s ease-out;
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Hero Section */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 350px;
+      gap:40px;
+      padding:60px 40px;
+      max-width:var(--max-width);
+      margin:auto;
+      align-items:center;
+    }
+    .hero img{
+      width:100%; 
+      border-radius:16px; 
+      box-shadow:var(--shadow);
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+    .hero img:hover{
+      transform: scale(1.05);
+    }
+    .hero h1{
+      font-size:42px; 
+      margin-bottom:12px;
+      animation: fadeInLeft 1s ease-out;
+    }
+    .hero .lead{
+      color:var(--muted); 
+      margin-bottom:20px;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    .hero p:not(.lead){
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    .hero blockquote{
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    /* Sections */
+    section{padding:60px 40px;}
+    .section-title{
+      text-align:center;
+      font-size:34px;
+      font-weight:700;
+      margin-bottom:12px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .muted{
+      text-align:center;
+      color:var(--muted);
+      max-width:800px;
+      margin:auto;
+      margin-bottom:40px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    /* Card Layout */
+    .card-container{
+      display:flex;
+      flex-wrap:wrap;
+      gap:22px;
+      justify-content:center;
+      max-width:var(--max-width);
+      margin:auto;
+    }
+    .card{
+      background:#ffe1e8;
+      padding:24px;
+      border-radius:14px;
+      flex:1;
+      min-width:280px;
+      max-width:460px;
+      box-shadow:var(--shadow);
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .card:hover{
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .card h3{
+      margin-bottom:10px;
+      transition: color 0.3s ease;
+    }
+    .card:hover h3{
+      color: var(--accent);
+    }
+
+    /* Video Card - Centered */
+    .video-card{
+      background:#ffe1e8;
+      padding:24px;
+      border-radius:14px;
+      flex:1;
+      min-width:280px;
+      max-width:600px; /* Increased max-width for better centering */
+      box-shadow:var(--shadow);
+      text-align:center;
+      transition: all 0.3s ease;
+      animation: scaleIn 0.8s ease-out;
+      margin: 0 auto; /* Center the video card */
+    }
+    .video-card:hover{
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    .video-container{
+      position:relative;
+      width:100%;
+      padding-top:56.25%; /* 16:9 Aspect Ratio */
+      margin-top:15px;
+      border-radius:10px;
+      overflow:hidden;
+      transition: all 0.3s ease;
+    }
+    .video-container:hover{
+      transform: scale(1.02);
+    }
+    .video-container video,
+    .video-container iframe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      border-radius:10px;
+      border:none;
+    }
+
+    /* Education */
+    .edu-list{
+      display:grid;
+      gap:16px;
+      max-width:800px;
+      margin:auto;
+    }
+    .edu-item{
+      background:#fff;
+      padding:20px;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      border-left:5px solid var(--accent);
+      transition: all 0.3s ease;
+      animation: fadeInLeft 0.8s ease-out;
+    }
+    .edu-item:hover{
+      transform: translateX(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .edu-item:nth-child(even){
+      animation: fadeInRight 0.8s ease-out;
+    }
+    .edu-item:nth-child(even):hover{
+      transform: translateX(-10px);
+    }
+
+    /* Family */
+    .family-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      max-width:900px;
+      margin:auto;
+    }
+    .family-grid img{
+      width:100%; 
+      border-radius:14px; 
+      box-shadow:var(--shadow);
+      transition: all 0.3s ease;
+      animation: scaleIn 0.6s ease-out;
+    }
+    .family-grid img:hover{
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .family-grid div:nth-child(1) img{
+      animation-delay: 0.1s;
+    }
+    .family-grid div:nth-child(2) img{
+      animation-delay: 0.2s;
+    }
+    .family-grid div:nth-child(3) img{
+      animation-delay: 0.3s;
+    }
+
+    /* Footer */
+    footer{
+      background:#222;
+      color:#fff;
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* Scroll animations */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .scroll-animate.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr; text-align:center;}
+      .family-grid{grid-template-columns:1fr;}
+      section{padding:40px 20px;}
+      .card-container{flex-direction:column;}
+      .video-card{
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo"><b>&lt;Nuril Arisha&gt;</b></div>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#biodata">Biodata</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#family">Family</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div>
+      <h1>Welcome to <br>My Personal Space</h1>
+      <p class="lead">Hi, I'm <strong>Nuril Arisha</strong>, an Information Science student passionate about how information is organized and used.</p>
+      <p>This website is a space where I share my journey, experiences, education, and personal interests.</p>
+      <blockquote style="margin-top:10px; font-style:italic; color:#444;">"Learn, explore, and grow. That's how I see life."</blockquote>
+    </div>
+
+    <div class="card-photo">
+<img src="C:\Users\User\Downloads\IMD318\sha.jpg"
+      <img src="sha.jpg" alt="Nuril Arisha" width="500" height="333" class="animate-float">
+    </div>
+  </section>
+
+<!-- Biodata -->
+<section id="biodata">
+  <div class="biodata-hero">
+    <h2 class="section-title">Biodata</h2>
+    <p class="muted">My name is <strong>Nuril Arisha binti Misbahuddin</strong>. I'm pursuing my <strong>Diploma in Information Science</strong> and love learning about data, technology, and information systems. I also love listening to music in my free time.</p>
+  </div>
+
+  <div class="biodata-grid">
+    <!-- Personal Details Card -->
+    <div class="main-card scroll-animate">
+      <div class="card-header">
+        <div class="profile-icon">👩‍🎓</div>  <!-- Woman Student -->
+        <h3>Personal Details</h3>
+      </div>
+      <div class="details-list">
+        <div class="detail-item">
+          <span class="detail-label">Name</span>
+          <span class="detail-value">Nuril Arisha Binti Misbahuddin</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Birth Date</span>
+          <span class="detail-value">30.03.2003</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Phone</span>
+          <span class="detail-value">0137088364</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Email</span>
+          <span class="detail-value">nrilarsha@gmail.com</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Favourite Colour</span>
+          <span class="detail-value color-pink">Pink 💖</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Address</span>
+          <span class="detail-value">Changlun, Kedah</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Favourite Songs with Audio Player -->
+    <div class="main-card scroll-animate">
+      <div class="card-header">
+        <div class="music-icon">🎵</div>
+        <h3>My Favourite Songs</h3>
+      </div>
+      
+      <!-- Audio Player -->
+      <div class="audio-player-container">
+        <audio id="backgroundMusic" loop>
+          <!-- You can replace this with your own audio file -->
+          <source src="C:\Users\User\Downloads\bittersweet.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <div class="player-controls">
+          <button class="play-pause-btn" id="playPauseBtn">
+            <span class="play-icon">▶</span>
+            <span class="pause-icon">⏸</span>
+          </button>
+          <div class="track-info">
+            <span class="track-name">Now Playing : Bittersweet by Madison Beer</span>
+          </div>
+          <button class="volume-btn" id="volumeBtn">
+            <span class="volume-icon">🔊</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="songs-list">
+        <div class="song-item">
+          <div class="song-info">
+            <span class="song-title">wildflower</span>
+            <span class="song-artist">Billie Eilish</span>
+          </div>
+          <div class="music-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+        <div class="song-item">
+          <div class="song-info">
+            <span class="song-title">vampire</span>
+            <span class="song-artist">Olivia Rodrigo</span>
+          </div>
+          <div class="music-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+        <div class="song-item">
+          <div class="song-info">
+            <span class="song-title">close with desires</span>
+            <span class="song-artist">Thuy</span>
+          </div>
+          <div class="music-wave">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="now-playing">
+        <div class="equalizer">
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+          <div class="eq-bar"></div>
+        </div>
+        <span id="status-text">Click play to start music</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Biodata Grid Layout */
+.biodata-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.biodata-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  align-items: stretch; /* This makes both columns equal height */
+}
+
+/* Main Cards - Equal Size */
+.main-card {
+  background: linear-gradient(135deg, #ffe1e8 0%, #ffd6e0 100%);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: auto; /* Let content determine height */
+  min-height: 550px; /* Set a minimum height to keep them equal */
+}
+
+.main-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b9d, #ff8fab, #ff6b9d);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Music card specific background */
+.biodata-grid .main-card:nth-child(2) {
+  background: linear-gradient(135deg, #fff8f6 0%, #fff0f0 100%);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-icon, .music-icon {
+  font-size: 2.2rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.detail-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-left-color: var(--accent);
+  transform: translateX(5px);
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.85rem;
+}
+
+.detail-value {
+  color: var(--muted);
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.color-pink {
+  color: #e91e63;
+  font-weight: 600;
+}
+
+/* Audio Player Styles */
+.audio-player-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.2);
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-pause-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(255, 105, 180, 0.3);
+  flex-shrink: 0;
+}
+
+.play-pause-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.play-pause-btn.playing .play-icon {
+  display: none;
+}
+
+.play-pause-btn.playing .pause-icon {
+  display: block;
+}
+
+.play-icon {
+  display: block;
+}
+
+.pause-icon {
+  display: none;
+}
+
+.track-info {
+  flex: 1;
+  min-width: 0; /* Prevents text overflow */
+}
+
+.track-name {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.volume-btn {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: rgba(255, 182, 193, 0.2);
+  color: #ff69b4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.volume-btn:hover {
+  background: rgba(255, 182, 193, 0.3);
+  transform: scale(1.1);
+}
+
+/* Music Card Styles */
+.songs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.song-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(244, 182, 185, 0.2);
+}
+
+.song-item:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateX(5px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.song-title {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-artist {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-wave {
+  display: flex;
+  align-items: end;
+  gap: 2px;
+  height: 20px;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.bar {
+  width: 3px;
+  background: linear-gradient(to top, var(--accent), #ff6b9d);
+  border-radius: 2px;
+  animation: wave 1.5s ease-in-out infinite;
+}
+
+.bar:nth-child(1) { height: 6px; animation-delay: 0s; }
+.bar:nth-child(2) { height: 10px; animation-delay: 0.1s; }
+.bar:nth-child(3) { height: 14px; animation-delay: 0.2s; }
+.bar:nth-child(4) { height: 10px; animation-delay: 0.3s; }
+.bar:nth-child(5) { height: 6px; animation-delay: 0.4s; }
+
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(244, 182, 185, 0.15);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: auto;
+  border: 1px solid rgba(244, 182, 185, 0.2);
+}
+
+.equalizer {
+  display: flex;
+  align-items: end;
+  gap: 2px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.eq-bar {
+  width: 3px;
+  background: linear-gradient(to top, var(--accent), #ff6b9d);
+  border-radius: 2px;
+  animation: equalize 1.5s ease-in-out infinite;
+}
+
+.eq-bar:nth-child(1) { height: 6px; animation-delay: 0s; }
+.eq-bar:nth-child(2) { height: 10px; animation-delay: 0.2s; }
+.eq-bar:nth-child(3) { height: 14px; animation-delay: 0.4s; }
+.eq-bar:nth-child(4) { height: 18px; animation-delay: 0.6s; }
+.eq-bar:nth-child(5) { height: 14px; animation-delay: 0.8s; }
+.eq-bar:nth-child(6) { height: 10px; animation-delay: 1s; }
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes equalize {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .biodata-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 600px;
+  }
+  
+  .main-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .biodata-hero {
+    margin-bottom: 40px;
+  }
+  
+  .main-card {
+    padding: 25px;
+  }
+  
+  .player-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .track-info {
+    text-align: center;
+    flex-basis: 100%;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .detail-value {
+    text-align: left;
+  }
+  
+  .song-item {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .music-wave {
+    margin-left: 0;
+    justify-content: center;
+  }
+  
+  .now-playing {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .biodata-grid {
+    gap: 20px;
+  }
+  
+  .main-card {
+    padding: 20px;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .profile-icon, .music-icon {
+    font-size: 1.8rem;
+  }
+}
+</style>
+
+<script>
+// Audio Player JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  const audio = document.getElementById('backgroundMusic');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const volumeBtn = document.getElementById('volumeBtn');
+  const statusText = document.getElementById('status-text');
+  
+  // Play/Pause functionality
+  playPauseBtn.addEventListener('click', function() {
+    if (audio.paused) {
+      audio.play();
+      playPauseBtn.classList.add('playing');
+      statusText.textContent = 'Now playing: My Favorite Song';
+    } else {
+      audio.pause();
+      playPauseBtn.classList.remove('playing');
+      statusText.textContent = 'Music paused';
+    }
+  });
+  
+  // Volume control (mute/unmute)
+  volumeBtn.addEventListener('click', function() {
+    if (audio.muted) {
+      audio.muted = false;
+      volumeBtn.querySelector('.volume-icon').textContent = '🔊';
+    } else {
+      audio.muted = true;
+      volumeBtn.querySelector('.volume-icon').textContent = '🔇';
+    }
+  });
+});
+</script>
+
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="card-container">
+      <div class="card scroll-animate">
+        <h3>Barista</h3>
+        <p>Worked part time preparing coffee drinks, taking customer orders, and enjoying the chance to share my love for coffee.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <h3>Live Host</h3>
+        <p>Hosted live sessions, engaged with viewers in real time, and promoted products with an energetic and friendly approach.</p>
+      </div>
+    </div>
+
+    <!-- Centered Video Column -->
+    <div class="video-card scroll-animate" style="margin-top: 40px;">
+      <h3>My Work Showcase</h3>
+      <p>Here’s a video of my latte art, showing my progress as I learn and experiment with new techniques.</p>
+      <div class="video-container">
+        <!-- Option 1: Upload your own video file -->
+        <video controls poster="video-preview.jpg">
+          <source src="C:\Users\User\Downloads\latte.mp4.mp4" type="video/mp4">
+          <source src="my-work-video.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+        
+        <!-- Option 2: Use YouTube or Vimeo embed (uncomment below and remove video tag above) -->
+        <!--
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                title="My Work Showcase Video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+        -->
+      </div>
+      <p style="margin-top:15px; font-size:14px; color:var(--muted);">
+        A showcase of how I practice and create my latte art.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- Education -->
+  <section id="education">
+    <h2 class="section-title">My Education Journey</h2>
+    <p class="muted">Here are the studies that shaped my passion for information systems and digital organization.</p>
+
+    <div class="edu-list">
+      <div class="edu-item scroll-animate">
+        <h4>🎓 Diploma in Information Science</h4>
+        <p><strong>Universiti Teknologi MARA (UiTM)</strong></p>
+        <p>Learned data management, digital records, metadata, information systems, and archival management.</p>
+      </div>
+
+      <div class="edu-item scroll-animate">
+        <h4>🏫 Sijil Pelajaran Malaysia (SPM)</h4>
+        <p><strong>SMK Bandar Baru Sintok</strong> — Graduated 2020</p>
+      </div>
+    </div>
+  </section>
+
+  
+    </div>
+
+  <!-- Family -->
+  <section id="family">
+    <h2 class="section-title">Family</h2>
+    <p class="muted">A small look into the people who love and support me every day.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>Family Background</h3>
+        <p>I come from a supportive family of five who value kindness, growth, and lifelong learning.</p>
+      </div>
+
+      <div class="card">
+        <h3>Gallery</h3>
+        <p>Here are some memories with my family that I cherish deeply.</p>
+      </div>
+    </div>
+</div>
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+    <!-- 3 Family Images in Columns -->
+    <div style="
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        max-width: 800px;
+        margin: 0 auto;
+    ">
+        <div>
+            <img src="C:\Users\User\Downloads\IMD318\family1.jpg"Family Photo 1" 
+                 style="width: 100%; border-radius: 15px; box: 5px 5px 0px #d7a7a7;">
+        </div>
+
+        <div>
+            <img src="C:\Users\User\Downloads\IMD318\family2.jpg"Family Photo 2" 
+                 style="width: 100%; border-radius: 15px; box: 5px 5px 0px #d7a7a7;">
+        </div>
+
+        <div>
+            <img src="C:\Users\User\Downloads\IMD318\family3.jpg"Family Photo 3" 
+                 style="width: 100%; border-radius: 15px; box: 5px 5px 0px #d7a7a7;">
+        </div>
+    </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 My Personal Website — All Rights Reserved
+  </footer>
+
+  <script>
+    // Scroll animation
+    const scrollElements = document.querySelectorAll('.scroll-animate');
+    
+    const elementInView = (el, dividend = 1) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return (
+        elementTop <=
+        (window.innerHeight || document.documentElement.clientHeight) / dividend
+      );
+    };
+    
+    const displayScrollElement = (element) => {
+      element.classList.add('animated');
+    };
+    
+    const hideScrollElement = (element) => {
+      element.classList.remove('animated');
+    };
+    
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el, 1.2)) {
+          displayScrollElement(el);
+        } else {
+          hideScrollElement(el);
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', () => {
+      handleScrollAnimation();
+    });
+    
+    // Initial check on page load
+    handleScrollAnimation();
+  </script>
+</body>
+</html>
